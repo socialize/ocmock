@@ -170,8 +170,15 @@
 		}
 		else
 		{
-			if([recordedArg class] != [passedArg class])
+            // Handle NSCFConstantString
+            BOOL recordedIsString = [recordedArg respondsToSelector:@selector(isEqualToString:)];
+            BOOL passedIsString = [passedArg respondsToSelector:@selector(isEqualToString:)];
+
+            if([recordedArg class] != [passedArg class] && !(recordedIsString && passedIsString))
 				return NO;
+
+//			if(![recordedArg isKindOfClass:[passedArg class]] && ![passedArg isKindOfClass:[recordedArg class]])
+//				return NO;
 			if(([recordedArg class] == [NSNumber class]) && 
 				([(NSNumber*)recordedArg compare:(NSNumber*)passedArg] != NSOrderedSame))
 				return NO;

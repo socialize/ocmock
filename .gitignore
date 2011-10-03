@@ -1,0 +1,10 @@
+.DS_Store
+build
+*.pyc
+*.mode*
+*.pbxuser
+*.perspective*
+*.zip
+*.xcworkspace
+*xcuserdata*
+xcshareddata
