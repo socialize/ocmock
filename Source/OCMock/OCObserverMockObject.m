@@ -13,7 +13,7 @@
 
 - (id)init
 {
-	[super init];
+	self = [super init];
 	recorders = [[NSMutableArray alloc] init];
 	return self;
 }
@@ -64,7 +64,7 @@
 
 - (void)handleNotification:(NSNotification *)aNotification
 {
-	int i, limit;
+	NSUInteger i, limit;
 	
 	limit = expectationOrderMatters ? 1 : [recorders count];
 	for(i = 0; i < limit; i++)

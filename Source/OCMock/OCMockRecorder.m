@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  $Id$
-//  Copyright (c) 2004-2010 by Mulle Kybernetik. See License file for details.
+//  Copyright (c) 2004-2011 by Mulle Kybernetik. See License file for details.
 //---------------------------------------------------------------------------------------
 
 #import <objc/runtime.h>
@@ -137,7 +137,7 @@
 	if([anInvocation selector] != [recordedInvocation selector])
 		return NO;
 	
-	n = [[recordedInvocation methodSignature] numberOfArguments];
+	n = (int)[[recordedInvocation methodSignature] numberOfArguments];
 	for(i = 2; i < n; i++)
 	{
 		recordedArg = [recordedInvocation getArgumentAtIndexAsObject:i];
@@ -170,15 +170,6 @@
 		}
 		else
 		{
-            // Handle NSCFConstantString
-            BOOL recordedIsString = [recordedArg respondsToSelector:@selector(isEqualToString:)];
-            BOOL passedIsString = [passedArg respondsToSelector:@selector(isEqualToString:)];
-
-            if([recordedArg class] != [passedArg class] && !(recordedIsString && passedIsString))
-				return NO;
-
-//			if(![recordedArg isKindOfClass:[passedArg class]] && ![passedArg isKindOfClass:[recordedArg class]])
-//				return NO;
 			if(([recordedArg class] == [NSNumber class]) && 
 				([(NSNumber*)recordedArg compare:(NSNumber*)passedArg] != NSOrderedSame))
 				return NO;

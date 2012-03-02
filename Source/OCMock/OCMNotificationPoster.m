@@ -3,31 +3,28 @@
 //  Copyright (c) 2009 by Mulle Kybernetik. See License file for details.
 //---------------------------------------------------------------------------------------
 
-#import "NSMethodSignature+OCMAdditions.h"
-#import "OCMIndirectReturnValueProvider.h"
+#import "OCMNotificationPoster.h"
 
 
-@implementation OCMIndirectReturnValueProvider
+@implementation OCMNotificationPoster
 
-- (id)initWithProvider:(id)aProvider andSelector:(SEL)aSelector
+- (id)initWithNotification:(id)aNotification
 {
-	[super init];
-	provider = [aProvider retain];
-	selector = aSelector;
+	self = [super init];
+	notification = [aNotification retain];
 	return self;
 }
 
 - (void)dealloc
 {
-	[provider release];
+	[notification release];
 	[super dealloc];
 }
 
 - (void)handleInvocation:(NSInvocation *)anInvocation
 {
-	[anInvocation setTarget:provider];
-	[anInvocation setSelector:selector];
-	[anInvocation invoke];
+	[[NSNotificationCenter defaultCenter] postNotification:notification];
 }
+
 
 @end
