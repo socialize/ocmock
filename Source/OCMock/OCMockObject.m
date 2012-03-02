@@ -39,7 +39,12 @@
 
 + (id)mockForProtocol:(Protocol *)aProtocol
 {
-	return [[[OCProtocolMockObject alloc] initWithProtocol:aProtocol] autorelease];
+	return [[[OCProtocolMockObject alloc] initWithProtocol:aProtocol isClass:NO] autorelease];
+}
+
++ (id)classMockForProtocol:(Protocol *)aProtocol
+{
+	return [[[OCProtocolMockObject alloc] initWithProtocol:aProtocol isClass:YES] autorelease];
 }
 
 + (id)partialMockForObject:(NSObject *)anObject
