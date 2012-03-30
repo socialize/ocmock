@@ -8,3 +8,5 @@
 #import <OCMock/OCMConstraint.h>
 #import <OCMock/OCMArg.h>
 #import <OCMock/NSNotificationCenter+OCMAdditions.h>
+#import <OCMock/OCMockObject+Utilities.h>
+#import <OCMock/OCMockRecorder+Utilities.h>
