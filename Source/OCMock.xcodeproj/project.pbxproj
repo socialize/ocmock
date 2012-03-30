@@ -119,6 +119,14 @@
 		AA077CAE15263ECE00707885 /* OCMockObject+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CAC15263ECE00707885 /* OCMockObject+Utilities.m */; };
 		AA077CAF15263FCC00707885 /* OCMockRecorder+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CA715263E8C00707885 /* OCMockRecorder+Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA077CB015263FD200707885 /* OCMockObject+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CAB15263ECE00707885 /* OCMockObject+Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA077CBD152641BF00707885 /* ClassMockRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CB9152641BF00707885 /* ClassMockRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA077CBE152641BF00707885 /* ClassMockRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CB9152641BF00707885 /* ClassMockRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA077CBF152641BF00707885 /* ClassMockRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBA152641BF00707885 /* ClassMockRegistry.m */; };
+		AA077CC0152641BF00707885 /* ClassMockRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBA152641BF00707885 /* ClassMockRegistry.m */; };
+		AA077CC1152641BF00707885 /* NSObject+ClassMock.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CBB152641BF00707885 /* NSObject+ClassMock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA077CC2152641BF00707885 /* NSObject+ClassMock.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CBB152641BF00707885 /* NSObject+ClassMock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA077CC3152641BF00707885 /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBC152641BF00707885 /* NSObject+ClassMock.m */; };
+		AA077CC4152641BF00707885 /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBC152641BF00707885 /* NSObject+ClassMock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +214,10 @@
 		AA077CA815263E8C00707885 /* OCMockRecorder+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockRecorder+Utilities.m"; sourceTree = "<group>"; };
 		AA077CAB15263ECE00707885 /* OCMockObject+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCMockObject+Utilities.h"; sourceTree = "<group>"; };
 		AA077CAC15263ECE00707885 /* OCMockObject+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+Utilities.m"; sourceTree = "<group>"; };
+		AA077CB9152641BF00707885 /* ClassMockRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassMockRegistry.h; sourceTree = "<group>"; };
+		AA077CBA152641BF00707885 /* ClassMockRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMockRegistry.m; sourceTree = "<group>"; };
+		AA077CBB152641BF00707885 /* NSObject+ClassMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassMock.h"; sourceTree = "<group>"; };
+		AA077CBC152641BF00707885 /* NSObject+ClassMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassMock.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +290,7 @@
 				03B315841463334E0052CD09 /* Core Mocks */,
 				03B3161C1463348F0052CD09 /* Partial Mocks */,
 				03B3161B146334530052CD09 /* Observer Mocks */,
+				AA077CB7152640DE00707885 /* Class Method Mocking */,
 				03B3161A146334320052CD09 /* Argument Handling */,
 				AA077CA515263E0E00707885 /* Utility Extensions */,
 				03B31618146333CA0052CD09 /* Foundation Additions */,
@@ -464,6 +477,17 @@
 			name = "Utility Extensions";
 			sourceTree = "<group>";
 		};
+		AA077CB7152640DE00707885 /* Class Method Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				AA077CB9152641BF00707885 /* ClassMockRegistry.h */,
+				AA077CBA152641BF00707885 /* ClassMockRegistry.m */,
+				AA077CBB152641BF00707885 /* NSObject+ClassMock.h */,
+				AA077CBC152641BF00707885 /* NSObject+ClassMock.m */,
+			);
+			name = "Class Method Mocking";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -495,6 +519,8 @@
 				03B31613146333C00052CD09 /* OCProtocolMockObject.h in Headers */,
 				AA077CAF15263FCC00707885 /* OCMockRecorder+Utilities.h in Headers */,
 				AA077CB015263FD200707885 /* OCMockObject+Utilities.h in Headers */,
+				AA077CBD152641BF00707885 /* ClassMockRegistry.h in Headers */,
+				AA077CC1152641BF00707885 /* NSObject+ClassMock.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +558,8 @@
 				03B316441463350E0052CD09 /* OCObserverMockObjectTests.h in Headers */,
 				AA077CA915263E8C00707885 /* OCMockRecorder+Utilities.h in Headers */,
 				AA077CAD15263ECE00707885 /* OCMockObject+Utilities.h in Headers */,
+				AA077CBE152641BF00707885 /* ClassMockRegistry.h in Headers */,
+				AA077CC2152641BF00707885 /* NSObject+ClassMock.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +723,8 @@
 				03B3160B146333C00052CD09 /* OCPartialMockObject.m in Sources */,
 				03B31610146333C00052CD09 /* OCPartialMockRecorder.m in Sources */,
 				03B31615146333C00052CD09 /* OCProtocolMockObject.m in Sources */,
+				AA077CBF152641BF00707885 /* ClassMockRegistry.m in Sources */,
+				AA077CC3152641BF00707885 /* NSObject+ClassMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +768,8 @@
 				03B31617146333C00052CD09 /* OCProtocolMockObject.m in Sources */,
 				AA077CAA15263E8C00707885 /* OCMockRecorder+Utilities.m in Sources */,
 				AA077CAE15263ECE00707885 /* OCMockObject+Utilities.m in Sources */,
+				AA077CC0152641BF00707885 /* ClassMockRegistry.m in Sources */,
+				AA077CC4152641BF00707885 /* NSObject+ClassMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
