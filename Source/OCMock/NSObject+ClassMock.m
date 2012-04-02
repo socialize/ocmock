@@ -65,6 +65,9 @@
     return [copiedClass instanceMethodSignatureForSelector:sel];
 }
 
+- (void)initialize {
+}
+
 - (BOOL)resolveClassMethod:(SEL)sel {
     return NO;
 }
