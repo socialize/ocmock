@@ -43,5 +43,8 @@
     }] andReturn:instance] alloc];
 }
 
+- (void)reset {
+    [self init];
+}
 
 @end

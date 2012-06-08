@@ -19,5 +19,6 @@
 - (void)stubIsMemberOfClass:(Class)class;
 - (id)makeNice;
 - (void)expectAllocAndReturn:(id)instance;
+- (void)reset;
 
 @end
