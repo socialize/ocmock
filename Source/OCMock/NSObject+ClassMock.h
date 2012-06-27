@@ -13,6 +13,7 @@
 
 @interface NSObject (ClassMock)
 + (id)expect;
++ (id)reject;
 + (void)verify;
 + (id)stub;
 + (void)startMockingClassWithClassMock:(id)classMock;

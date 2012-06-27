@@ -118,6 +118,11 @@
     [self startMockingErrorForSelector:_cmd];
 }
 
++ (id)reject {
+    [self startMockingErrorForSelector:_cmd];
+    return nil;
+}
+
 + (void)stopMockingClass {
     [self startMockingErrorForSelector:_cmd];
 }
