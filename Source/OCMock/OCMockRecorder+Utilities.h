@@ -22,4 +22,8 @@
 
 - (id)andReturnFromBlock:(id (^)())block;
 - (id)andReturnBoolFromBlock:(BOOL (^)())block;
+
+- (id)andForwardToObject:(id)object;
+
+
 @end

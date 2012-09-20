@@ -102,4 +102,10 @@
     }];
 }
 
+- (id)andForwardToObject:(id)object {
+    return [self andDo:^(NSInvocation *inv) {
+        [inv invokeWithTarget:object];
+    }];
+}
+
 @end
