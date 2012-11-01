@@ -100,7 +100,7 @@
 }
 
 + (void)startMockingErrorForSelector:(SEL)sel {
-    NSAssert(NO, @"`startMockingClass` must be called on %@ before invoking `%s`", [self class], sel);
+    NSAssert(NO, @"`startMockingClass` must be called on %@ before invoking `%s`", [self class], (char*)sel);
 }
 
 // These should be forwarded. If the real implementation is ever called, we want to crash.

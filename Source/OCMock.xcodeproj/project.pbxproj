@@ -627,7 +627,7 @@
 		030EF09E14632FD000B04273 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = ThoughtWorks;
 			};
 			buildConfigurationList = 030EF0A114632FD000B04273 /* Build configuration list for PBXProject "OCMock" */;
@@ -852,6 +852,7 @@
 		030EF0D314632FD000B04273 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -871,6 +872,7 @@
 		030EF0D414632FD000B04273 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -890,6 +892,7 @@
 		030EF0D614632FD000B04273 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OCMock-eiknerwmaxlkjybhjofygdhyagum/Build/Products/Debug/Frameworks\"",
@@ -910,6 +913,7 @@
 		030EF0D714632FD000B04273 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OCMock-eiknerwmaxlkjybhjofygdhyagum/Build/Products/Debug/Frameworks\"",
