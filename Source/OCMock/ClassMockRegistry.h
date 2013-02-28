@@ -10,6 +10,7 @@
 
 @interface ClassMockRegistry : NSObject
 + (void)stopMockingAllClasses;
++ (void)stopMockingAllClassesAndVerify;
 
 + (void)registerClassMock:(id)classMock forClass:(Class)class;
 

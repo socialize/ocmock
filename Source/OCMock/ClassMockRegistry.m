@@ -23,6 +23,14 @@ static NSMutableDictionary *copiedClasses;
 
 @implementation ClassMockRegistry
 
++ (void)stopMockingAllClassesAndVerify {
+    [[self classMocks] enumerateKeysAndObjectsUsingBlock:^(id key, id mock, BOOL *stop) {
+        [mock verify];
+    }];
+    
+    [self stopMockingAllClasses];
+}
+
 + (void)stopMockingAllClasses {
     [[self classMocks] enumerateKeysAndObjectsUsingBlock:^(id key, id mock, BOOL *stop) {
         // Just in case dealocating triggers a verify
