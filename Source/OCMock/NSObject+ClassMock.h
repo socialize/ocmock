@@ -19,6 +19,7 @@
 + (void)startMockingClassWithClassMock:(id)classMock;
 + (void)startMockingClass;
 + (void)stopMockingClass;
++ (void)startNiceMockingClass;
 + (void)stopMockingClassAndVerify;
 + (Class)origClass;
 + (id)classMock;

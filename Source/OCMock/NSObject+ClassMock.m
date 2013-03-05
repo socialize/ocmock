@@ -99,6 +99,12 @@
     [self startMockingClassWithClassMock:[OCMockObject classMockForClass:self]];
 }
 
++ (void)startNiceMockingClass {
+    id mock = [OCMockObject classMockForClass:self];
+    [mock makeNice];
+    [self startMockingClassWithClassMock:mock];
+}
+
 + (void)startMockingErrorForSelector:(SEL)sel {
     NSAssert(NO, @"`startMockingClass` must be called on %@ before invoking `%s`", [self class], sel_getName(sel));
 }
