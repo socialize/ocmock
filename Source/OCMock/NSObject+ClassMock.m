@@ -105,6 +105,11 @@
     [self startMockingClassWithClassMock:mock];
 }
 
++ (void)disable {
+    [self startNiceMockingClass];
+    [[self stub] alloc];
+}
+
 + (void)startMockingErrorForSelector:(SEL)sel {
     NSAssert(NO, @"`startMockingClass` must be called on %@ before invoking `%s`", [self class], sel_getName(sel));
 }

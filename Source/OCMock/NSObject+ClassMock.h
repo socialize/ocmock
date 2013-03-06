@@ -23,5 +23,6 @@
 + (void)stopMockingClassAndVerify;
 + (Class)origClass;
 + (id)classMock;
++ (void)disable;
 
 @end
