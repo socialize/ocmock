@@ -127,6 +127,14 @@
 		AA077CC2152641BF00707885 /* NSObject+ClassMock.h in Headers */ = {isa = PBXBuildFile; fileRef = AA077CBB152641BF00707885 /* NSObject+ClassMock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA077CC3152641BF00707885 /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBC152641BF00707885 /* NSObject+ClassMock.m */; };
 		AA077CC4152641BF00707885 /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CBC152641BF00707885 /* NSObject+ClassMock.m */; };
+		03E6F058152FA60B0079EAF7 /* OCMockClassObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E6F056152FA60B0079EAF7 /* OCMockClassObject.h */; };
+		03E6F059152FA60B0079EAF7 /* OCMockClassObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E6F056152FA60B0079EAF7 /* OCMockClassObject.h */; };
+		03E6F05A152FA60B0079EAF7 /* OCMockClassObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E6F057152FA60B0079EAF7 /* OCMockClassObject.m */; };
+		03E6F05B152FA60B0079EAF7 /* OCMockClassObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E6F057152FA60B0079EAF7 /* OCMockClassObject.m */; };
+		03E6F05E152FA8E20079EAF7 /* OCClassMockRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E6F05C152FA8E20079EAF7 /* OCClassMockRecorder.h */; };
+		03E6F05F152FA8E20079EAF7 /* OCClassMockRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E6F05C152FA8E20079EAF7 /* OCClassMockRecorder.h */; };
+		03E6F060152FA8E20079EAF7 /* OCClassMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E6F05D152FA8E20079EAF7 /* OCClassMockRecorder.m */; };
+		03E6F061152FA8E20079EAF7 /* OCClassMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E6F05D152FA8E20079EAF7 /* OCClassMockRecorder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,9 +215,10 @@
 		03B316271463350E0052CD09 /* OCMockRecorderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockRecorderTests.m; sourceTree = "<group>"; };
 		03B316281463350E0052CD09 /* OCObserverMockObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCObserverMockObjectTests.h; sourceTree = "<group>"; };
 		03B316291463350E0052CD09 /* OCObserverMockObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCObserverMockObjectTests.m; sourceTree = "<group>"; };
-		03B3168C14633B1D0052CD09 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = "../../../../Library/Developer/Xcode/DerivedData/OCMock-eiknerwmaxlkjybhjofygdhyagum/Build/Products/Debug/Frameworks/OCHamcrest.framework"; sourceTree = "<group>"; };
+		03B3168C14633B1D0052CD09 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = "$(BUILT_PRODUCTS_DIR)/Debug/Frameworks/OCHamcrest.framework"; sourceTree = "<group>"; };
 		03B3168F14633FAB0052CD09 /* Changes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Changes.txt; sourceTree = "<group>"; };
 		03B3169014633FAB0052CD09 /* License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		AA077CA715263E8C00707885 /* OCMockRecorder+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCMockRecorder+Utilities.h"; sourceTree = "<group>"; };
 		AA077CA815263E8C00707885 /* OCMockRecorder+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockRecorder+Utilities.m"; sourceTree = "<group>"; };
 		AA077CAB15263ECE00707885 /* OCMockObject+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCMockObject+Utilities.h"; sourceTree = "<group>"; };
@@ -218,6 +227,12 @@
 		AA077CBA152641BF00707885 /* ClassMockRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMockRegistry.m; sourceTree = "<group>"; };
 		AA077CBB152641BF00707885 /* NSObject+ClassMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassMock.h"; sourceTree = "<group>"; };
 		AA077CBC152641BF00707885 /* NSObject+ClassMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassMock.m"; sourceTree = "<group>"; };
+=======
+		03E6F056152FA60B0079EAF7 /* OCMockClassObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockClassObject.h; sourceTree = "<group>"; };
+		03E6F057152FA60B0079EAF7 /* OCMockClassObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockClassObject.m; sourceTree = "<group>"; };
+		03E6F05C152FA8E20079EAF7 /* OCClassMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCClassMockRecorder.h; sourceTree = "<group>"; };
+		03E6F05D152FA8E20079EAF7 /* OCClassMockRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCClassMockRecorder.m; sourceTree = "<group>"; };
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +304,7 @@
 				030EF0B814632FD000B04273 /* OCMock.h */,
 				03B315841463334E0052CD09 /* Core Mocks */,
 				03B3161C1463348F0052CD09 /* Partial Mocks */,
+				03E6F054152FA5DC0079EAF7 /* Class Object Mocks */,
 				03B3161B146334530052CD09 /* Observer Mocks */,
 				AA077CB7152640DE00707885 /* Class Method Mocking */,
 				03B3161A146334320052CD09 /* Argument Handling */,
@@ -466,6 +482,7 @@
 			name = "Invocation Handler";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		AA077CA515263E0E00707885 /* Utility Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +503,17 @@
 				AA077CBC152641BF00707885 /* NSObject+ClassMock.m */,
 			);
 			name = "Class Method Mocking";
+=======
+		03E6F054152FA5DC0079EAF7 /* Class Object Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				03E6F056152FA60B0079EAF7 /* OCMockClassObject.h */,
+				03E6F057152FA60B0079EAF7 /* OCMockClassObject.m */,
+				03E6F05C152FA8E20079EAF7 /* OCClassMockRecorder.h */,
+				03E6F05D152FA8E20079EAF7 /* OCClassMockRecorder.m */,
+			);
+			name = "Class Object Mocks";
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,10 +545,15 @@
 				03B31609146333C00052CD09 /* OCPartialMockObject.h in Headers */,
 				03B3160E146333C00052CD09 /* OCPartialMockRecorder.h in Headers */,
 				03B31613146333C00052CD09 /* OCProtocolMockObject.h in Headers */,
+<<<<<<< HEAD
 				AA077CAF15263FCC00707885 /* OCMockRecorder+Utilities.h in Headers */,
 				AA077CB015263FD200707885 /* OCMockObject+Utilities.h in Headers */,
 				AA077CBD152641BF00707885 /* ClassMockRegistry.h in Headers */,
 				AA077CC1152641BF00707885 /* NSObject+ClassMock.h in Headers */,
+=======
+				03E6F058152FA60B0079EAF7 /* OCMockClassObject.h in Headers */,
+				03E6F05E152FA8E20079EAF7 /* OCClassMockRecorder.h in Headers */,
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,10 +589,15 @@
 				03B3163A1463350E0052CD09 /* OCMockObjectTests.h in Headers */,
 				03B3163F1463350E0052CD09 /* OCMockRecorderTests.h in Headers */,
 				03B316441463350E0052CD09 /* OCObserverMockObjectTests.h in Headers */,
+<<<<<<< HEAD
 				AA077CA915263E8C00707885 /* OCMockRecorder+Utilities.h in Headers */,
 				AA077CAD15263ECE00707885 /* OCMockObject+Utilities.h in Headers */,
 				AA077CBE152641BF00707885 /* ClassMockRegistry.h in Headers */,
 				AA077CC2152641BF00707885 /* NSObject+ClassMock.h in Headers */,
+=======
+				03E6F059152FA60B0079EAF7 /* OCMockClassObject.h in Headers */,
+				03E6F05F152FA8E20079EAF7 /* OCClassMockRecorder.h in Headers */,
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,8 +665,13 @@
 		030EF09E14632FD000B04273 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+<<<<<<< HEAD
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = ThoughtWorks;
+=======
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Mulle Kybernetik";
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			};
 			buildConfigurationList = 030EF0A114632FD000B04273 /* Build configuration list for PBXProject "OCMock" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -723,8 +766,13 @@
 				03B3160B146333C00052CD09 /* OCPartialMockObject.m in Sources */,
 				03B31610146333C00052CD09 /* OCPartialMockRecorder.m in Sources */,
 				03B31615146333C00052CD09 /* OCProtocolMockObject.m in Sources */,
+<<<<<<< HEAD
 				AA077CBF152641BF00707885 /* ClassMockRegistry.m in Sources */,
 				AA077CC3152641BF00707885 /* NSObject+ClassMock.m in Sources */,
+=======
+				03E6F05A152FA60B0079EAF7 /* OCMockClassObject.m in Sources */,
+				03E6F060152FA8E20079EAF7 /* OCClassMockRecorder.m in Sources */,
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,10 +814,15 @@
 				03B3160D146333C00052CD09 /* OCPartialMockObject.m in Sources */,
 				03B31612146333C00052CD09 /* OCPartialMockRecorder.m in Sources */,
 				03B31617146333C00052CD09 /* OCProtocolMockObject.m in Sources */,
+<<<<<<< HEAD
 				AA077CAA15263E8C00707885 /* OCMockRecorder+Utilities.m in Sources */,
 				AA077CAE15263ECE00707885 /* OCMockObject+Utilities.m in Sources */,
 				AA077CC0152641BF00707885 /* ClassMockRegistry.m in Sources */,
 				AA077CC4152641BF00707885 /* NSObject+ClassMock.m in Sources */,
+=======
+				03E6F05B152FA60B0079EAF7 /* OCMockClassObject.m in Sources */,
+				03E6F061152FA8E20079EAF7 /* OCClassMockRecorder.m in Sources */,
+>>>>>>> a44290b8bb90ba125f453a47586462383f5b12ae
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -838,7 +891,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -904,8 +957,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(TARGET_BUILD_DIR)/Frameworks\"",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OCMock-eiknerwmaxlkjybhjofygdhyagum/Build/Products/Debug/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OCMock/OCMock-Prefix.pch";
@@ -913,6 +966,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -925,8 +979,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"${TARGET_BUILD_DIR}/Frameworks\"",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OCMock-eiknerwmaxlkjybhjofygdhyagum/Build/Products/Debug/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OCMock/OCMock-Prefix.pch";
@@ -934,6 +988,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"${TARGET_BUILD_DIR}/Frameworks",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Versions/C\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

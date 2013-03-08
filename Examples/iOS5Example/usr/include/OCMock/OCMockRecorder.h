@@ -14,7 +14,6 @@
 
 - (id)initWithSignatureResolver:(id)anObject;
 
-- (BOOL)matchesSelector:(SEL)sel;
 - (BOOL)matchesInvocation:(NSInvocation *)anInvocation;
 - (void)releaseInvocation;
 

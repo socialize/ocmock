@@ -10,6 +10,16 @@
 //	Helper classes and protocols for testing
 // --------------------------------------------------------------------------------------
 
+@interface InterfaceForTypedef : NSObject
+@end
+
+@implementation InterfaceForTypedef
+@end
+
+typedef InterfaceForTypedef TypedefInterface;
+typedef InterfaceForTypedef* PointerTypedefInterface;
+typedef int intTypedef;
+
 @protocol TestProtocol
 - (int)primitiveValue;
 @optional
@@ -18,6 +28,38 @@
 
 @protocol ProtocolWithTypeQualifierMethod
 - (void)aSpecialMethod:(byref in void *)someArg;
+@end
+
+@protocol ProtocolWithTypedefs
+- (TypedefInterface*)typedefReturnValue1;
+- (PointerTypedefInterface)typedefReturnValue2;
+- (void)typedefParameter:(TypedefInterface*)parameter;
+- (void)typedefPointerParameter:(PointerTypedefInterface)parameter;
+@end
+
+@interface ProtocolWithTypedefsImplementation : NSObject<ProtocolWithTypedefs>
+- (TypedefInterface*)typedefReturnValue1;
+- (PointerTypedefInterface)typedefReturnValue2;
+- (void)typedefParameter:(TypedefInterface*)parameter;
+- (void)typedefPointerParameter:(PointerTypedefInterface)parameter;
+@end
+
+@implementation ProtocolWithTypedefsImplementation
+
+- (TypedefInterface*)typedefReturnValue1 {
+    return nil;
+}
+
+- (PointerTypedefInterface)typedefReturnValue2 {
+    return nil;
+}
+
+- (void)typedefParameter:(TypedefInterface*)parameter {
+}
+
+-(void)typedefPointerParameter:(PointerTypedefInterface)parameter {
+}
+
 @end
 
 @interface TestClassThatCallsSelf : NSObject
@@ -39,6 +81,38 @@
 }
 
 @end
+
+@interface TestClassWithIntPointerMethod : NSObject
+
+- (void)returnValueInPointer:(int *)ptr;
+
+@end
+
+@implementation TestClassWithIntPointerMethod
+
+- (void)returnValueInPointer:(int *)ptr
+{
+    *ptr = 555;
+}
+
+@end
+
+
+@interface TestClassWithClassMethod : NSObject
+
++ (NSString *)method1;
+
+@end
+
+@implementation TestClassWithClassMethod
+
++ (NSString *)method1
+{
+    return @"Foo";
+}
+
+@end
+
 
 @interface TestObserver	: NSObject
 {
@@ -161,17 +235,15 @@ static NSString *TestNotification = @"TestNotification";
 - (void)testAcceptsStubbedMethodWithPointerArgument
 {
 	NSError *error;
-	BOOL yes = YES;
-	[[[mock stub] andReturnValue:OCMOCK_VALUE(yes)] writeToFile:OCMOCK_ANY atomically:YES encoding:NSMacOSRomanStringEncoding error:&error];
+	[[[mock stub] andReturnValue:OCMOCK_VALUE((BOOL){YES})] writeToFile:OCMOCK_ANY atomically:YES encoding:NSMacOSRomanStringEncoding error:&error];
 	
 	STAssertTrue([mock writeToFile:@"foo" atomically:YES encoding:NSMacOSRomanStringEncoding error:&error], nil);
 }
 
 - (void)testAcceptsStubbedMethodWithAnyPointerArgument
 {
-	BOOL yes = YES;
 	NSError *error;
-	[[[mock stub] andReturnValue:OCMOCK_VALUE(yes)] writeToFile:OCMOCK_ANY atomically:YES encoding:NSMacOSRomanStringEncoding error:[OCMArg anyPointer]];
+	[[[mock stub] andReturnValue:OCMOCK_VALUE((BOOL){YES})] writeToFile:OCMOCK_ANY atomically:YES encoding:NSMacOSRomanStringEncoding error:[OCMArg anyPointer]];
 	
 	STAssertTrue([mock writeToFile:@"foo" atomically:YES encoding:NSMacOSRomanStringEncoding error:&error], nil);
 }
@@ -350,7 +422,7 @@ static NSString *TestNotification = @"TestNotification";
 
 - (NSString *)valueForString:(NSString *)aString andMask:(NSStringCompareOptions)mask
 {
-	return [NSString stringWithFormat:@"[%@, %d]", aString, mask];
+	return [NSString stringWithFormat:@"[%@, %ld]", aString, mask];
 }
 
 - (void)testCallsAlternativeMethodAndPassesOriginalArgumentsAndReturnsValue
@@ -416,7 +488,7 @@ static NSString *TestNotification = @"TestNotification";
 
 - (void)testReturnsValuesInPassByReferenceArguments
 {
-	NSString *expectedName = [NSString stringWithString:@"Test"];
+	NSString *expectedName = @"Test";
 	NSArray *expectedArray = [NSArray array];
 	
 	[[mock expect] completePathIntoString:[OCMArg setTo:expectedName] caseSensitive:YES 
@@ -429,6 +501,20 @@ static NSString *TestNotification = @"TestNotification";
 	STAssertNoThrow([mock verify], @"An unexpected exception was thrown");
 	STAssertEqualObjects(expectedName, actualName, @"The two string objects should be equal");
 	STAssertEqualObjects(expectedArray, actualArray, @"The two array objects should be equal");
+}
+
+
+- (void)testReturnsValuesInNonObjectPassByReferenceArguments
+{
+    int expectedValue = 1234;
+    mock = [OCMockObject mockForClass:[TestClassWithIntPointerMethod class]];
+    [[mock stub] returnValueInPointer:[OCMArg setToValue:[NSValue value:&expectedValue withObjCType:@encode(int)]]];
+    
+    int actualValue = 0;
+    [mock returnValueInPointer:&actualValue];
+    
+    STAssertEquals(expectedValue, actualValue, @"Should have returned value via pass by ref argument.");
+    
 }
 
 
@@ -632,6 +718,23 @@ static NSString *TestNotification = @"TestNotification";
     STAssertFalse([mock respondsToSelector:@selector(fooBar)], nil);
 }
 
+- (void)testWithTypedefReturnType {
+	mock = [OCMockObject mockForProtocol:@protocol(ProtocolWithTypedefs)];
+    STAssertNoThrow([[[mock stub] andReturn:[TypedefInterface new]] typedefReturnValue1], @"Should accept a typedefed return-type");
+    STAssertNoThrow([mock typedefReturnValue1], @"bla");
+}
+
+- (void)testWithTypedefPointerReturnType {
+	mock = [OCMockObject mockForProtocol:@protocol(ProtocolWithTypedefs)];
+    STAssertNoThrow([[[mock stub] andReturn:[TypedefInterface new]] typedefReturnValue2], @"Should accept a typedefed return-type");
+    STAssertNoThrow([mock typedefReturnValue2], @"bla");
+}
+
+- (void)testWithTypedefParameter {
+	mock = [OCMockObject mockForProtocol:@protocol(ProtocolWithTypedefs)];
+    STAssertNoThrow([[mock stub] typedefParameter:nil], @"Should accept a typedefed parameter-type");
+    STAssertNoThrow([mock typedefParameter:nil], @"bla");
+}
 
 // --------------------------------------------------------------------------------------
 //	nice mocks don't complain about unknown methods
@@ -707,16 +810,24 @@ static NSString *TestNotification = @"TestNotification";
 	STAssertEqualObjects(@"TestFoo", [realObject method1], @"Should have stubbed method.");
 }
 
+- (void)testReturnsToRealImplementationWhenExpectedCallOccurred
+{
+    TestClassThatCallsSelf *realObject = [[[TestClassThatCallsSelf alloc] init] autorelease];
+   	mock = [OCMockObject partialMockForObject:realObject];
+   	[[[mock expect] andReturn:@"TestFoo"] method2];
+   	STAssertEqualObjects(@"TestFoo", [realObject method2], @"Should have stubbed method.");
+   	STAssertEqualObjects(@"Foo", [realObject method2], @"Should have 'unstubbed' method.");
+}
+
 - (void)testRestoresObjectWhenStopped
 {
 	TestClassThatCallsSelf *realObject = [[[TestClassThatCallsSelf alloc] init] autorelease];
 	mock = [OCMockObject partialMockForObject:realObject];
 	[[[mock stub] andReturn:@"TestFoo"] method2];
 	STAssertEqualObjects(@"TestFoo", [realObject method2], @"Should have stubbed method.");
-	[mock stop];
+	[mock stopMocking];
 	STAssertEqualObjects(@"Foo", [realObject method2], @"Should have 'unstubbed' method.");
 }
-
 
 - (void)testCallsToSelfInRealObjectAreShadowedByPartialMock
 {
@@ -752,6 +863,27 @@ static NSString *TestNotification = @"TestNotification";
 	[[[mock stub] andCall:@selector(aMethodWithVoidReturn) onObject:self] method1];
 	STAssertNoThrow([foo method1], @"Should have worked.");
 }
+
+
+// --------------------------------------------------------------------------------------
+//	class object mocks allow stubbing/expecting on class objects
+// --------------------------------------------------------------------------------------
+
+- (void)testStubsMethodOnClassObject
+{
+    mock = [OCMockObject mockForClassObject:[TestClassWithClassMethod class]];
+    
+	[[[mock stub] andReturn:@"TestFoo"] method1];
+	STAssertEqualObjects(@"TestFoo", [TestClassWithClassMethod method1], @"Should have stubbed method.");
+}
+
+//- (void)testForwardsUnstubbedMethodsToRealClassObjectAfterStopIsCalled
+//{
+//    mock = [OCMockObject mockForClassObject:[TestClassWithClassMethod class]];
+//	[[[mock stub] andReturn:@"TestFoo"] method1];
+//    [mock stopMocking];
+//	STAssertEqualObjects(@"Foo", [TestClassWithClassMethod method1], @"Should not have stubbed method.");
+//}
 
 
 // --------------------------------------------------------------------------------------

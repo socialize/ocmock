@@ -1,18 +1,26 @@
+#!/usr/bin/env ruby
    
-class ReleaseManager
+class Builder
 
     def initialize
         @env = Environment.new()
         @worker = CompositeWorker.new([Logger.new(), Executer.new()])
     end              
     
-    def makeAll
+    def makeRelease
+      createWorkingDirectories
+      downloadSource
+      copySource
+      buildModules
+      createPackage "ocmock-2.0.1.dmg", "OCMock 2.0.1" 
+      openPackageDir
+    end
+    
+    def justBuild
       createWorkingDirectories
       downloadSource
       buildModules
-      createPackage "OCMock-2.0.dmg", "OCMock 2.0"
-      #upload "OCMock-2.0.dmg" "muller.mulle-kybernetik.com:/www/sites/www.mulle-kybernetik.com/htdocs/software/OCMock/Downloads"
-      #cleanup
+      openPackageDir
     end
     
     def createWorkingDirectories
@@ -22,8 +30,10 @@ class ReleaseManager
     end
     
     def downloadSource
-        @worker.chdir(@env.sourcedir) 
-        @worker.run("curl https://nodeload.github.com/erikdoe/ocmock/tarball/master | tar -x --strip-components 1")
+        @worker.run("git archive master | tar -x -v -C #{@env.sourcedir}")
+    end
+
+    def copySource
         @worker.run("cp -R #{@env.sourcedir}/Source #{@env.productdir}")
     end
 
@@ -33,8 +43,8 @@ class ReleaseManager
         osxproductdir = "#{@env.productdir}/OSX"                                        
         @worker.run("mkdir -p #{osxproductdir}")
         @worker.run("cp -R build/Release/OCMock.framework #{osxproductdir}")    
-        @worker.run("xcodebuild -project OCMock.xcodeproj -target OCMockLib -sdk iphoneos5.0")                                                 
-        @worker.run("xcodebuild -project OCMock.xcodeproj -target OCMockLib -sdk iphonesimulator5.0")                                                 
+        @worker.run("xcodebuild -project OCMock.xcodeproj -target OCMockLib -sdk iphoneos6.0")                                                 
+        @worker.run("xcodebuild -project OCMock.xcodeproj -target OCMockLib -sdk iphonesimulator6.0")                                                 
         @worker.run("lipo -create -output build/Release/libOCMock.a build/Release-*/libOCMock.a")      
         iosproductdir = "#{@env.productdir}/iOS"                                           
         @worker.run("mkdir -p #{iosproductdir}")
@@ -55,6 +65,10 @@ class ReleaseManager
         @worker.run("hdiutil convert -format UDZO temp.dmg -o #{@env.packagedir}/#{packagename} -imagekey zlib-level=9")
         @worker.run("hdiutil internet-enable -yes #{@env.packagedir}/#{packagename}")
         @worker.run("rm temp.dmg")
+    end           
+    
+    def openPackageDir
+        @worker.run("open #{@env.packagedir}") 
     end
     
     def upload(packagename, dest)
@@ -74,7 +88,7 @@ end
 
 class Environment
     def initialize()
-        @tmpdir = "/tmp/makerelease.#{Process.pid}"
+        @tmpdir = "/tmp/ocmock.#{Process.pid}"
         @sourcedir = tmpdir + "/Source"
         @productdir = tmpdir + "/Products"
         @packagedir = tmpdir
@@ -138,5 +152,14 @@ class CompositeWorker
 end    
 
 
-ReleaseManager.new.makeAll
+if /Tools$/.match(Dir.pwd)
+  Dir.chdir("..")
+end
+
+if ARGV[0] == '-r' 
+  Builder.new.makeRelease
+else
+  Builder.new.justBuild
+end
+
 

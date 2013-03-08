@@ -16,10 +16,8 @@
 }
 
 + (id)mockForClass:(Class)aClass;
-+ (id)mockForClassObject:(Class)aClass;
 + (id)mockForProtocol:(Protocol *)aProtocol;
 + (id)partialMockForObject:(NSObject *)anObject;
-+ (id)classMockForProtocol:(Protocol *)aProtocol;
 
 + (id)niceMockForClass:(Class)aClass;
 + (id)niceMockForProtocol:(Protocol *)aProtocol;
@@ -36,13 +34,10 @@
 
 - (void)verify;
 
-- (void)stopMocking;
-
 // internal use only
 
 - (id)getNewRecorder;
 - (BOOL)handleInvocation:(NSInvocation *)anInvocation;
 - (void)handleUnRecordedInvocation:(NSInvocation *)anInvocation;
-- (BOOL)handleSelector:(SEL)sel;
 
 @end
