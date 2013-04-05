@@ -88,6 +88,20 @@
     }];
 }
 
+- (id)andDo6:(void(^)(id, id, id, id, id, id))action {
+    if (action == nil) return self;
+    return [self andDo:^(NSInvocation *inv) {
+        id arg1, arg2, arg3, arg4, arg5, arg6;
+        [inv getArgument:&arg1 atIndex:2];
+        [inv getArgument:&arg2 atIndex:3];
+        [inv getArgument:&arg3 atIndex:4];
+        [inv getArgument:&arg4 atIndex:5];
+        [inv getArgument:&arg5 atIndex:6];
+        [inv getArgument:&arg6 atIndex:7];
+        action(arg1, arg2, arg3, arg4, arg5, arg6);
+    }];
+}
+
 - (id)andReturnFromBlock:(id (^)())block {
     return [self andDo:^(NSInvocation *inv) {
         id retVal = block();
