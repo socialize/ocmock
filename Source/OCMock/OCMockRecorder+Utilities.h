@@ -19,6 +19,7 @@
 - (id)andDo3:(void(^)(id, id, id))action;
 - (id)andDo4:(void(^)(id, id, id, id))action;
 - (id)andDo5:(void(^)(id, id, id, id, id))action;
+- (id)andDo6:(void(^)(id, id, id, id, id, id))action;
 
 - (id)andReturnFromBlock:(id (^)())block;
 - (id)andReturnBoolFromBlock:(BOOL (^)())block;
