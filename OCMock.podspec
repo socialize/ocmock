@@ -11,6 +11,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/OCMock/*.[mh]'
   s.license = { :type => 'Custom', :text => 'Copyright (c) 2004-2013 by Mulle Kybernetik. All rights reserved.
+  s.requires_arc = false
+  s.compiler_flags = '-fno-objc-arc'
 
   Permission to use, copy, modify and distribute this software and its documentation
   is hereby granted, provided that both the copyright notice and this permission
